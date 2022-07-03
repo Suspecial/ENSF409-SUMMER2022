@@ -1,5 +1,5 @@
 /**
- * Example 2-6
+ * Example 2-15
  */
 package ca.ucalgary.ensf409;
 import java.util.Scanner;
