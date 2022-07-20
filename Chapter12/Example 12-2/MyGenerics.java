@@ -7,35 +7,32 @@ package edu.ucalgary.ensf409;
 
 public class MyGenerics {
    public static void main(String[] args) {
+      ExampleGeneric<Integer> integerExampleGeneric = new ExampleGeneric<Integer>(null);
+      ExampleGeneric<String> stringExampleGeneric = new ExampleGeneric<String>("Hi");
+
       Integer six = 6;
-      String aKey = "My Key";
-      String aValue = "This is a value";
+      String hi = "Hello, World";
 
-      ExampleGeneric<String,Integer> integerExampleGeneric = new ExampleGeneric<String, Integer>(aKey, six);
-      ExampleGeneric<String, String> stringExampleGeneric = new ExampleGeneric<String, String>(aKey, aValue);
+      integerExampleGeneric.add(six);
+      stringExampleGeneric.add(hi);
 
-
-      System.out.println("Integer Key: " + integerExampleGeneric.getKey());
-      System.out.println("Integer Value: " + integerExampleGeneric.getValue());
-      System.out.println("String Key: " + stringExampleGeneric.getKey());
-      System.out.println("String Value: " + stringExampleGeneric.getValue());
+      System.out.println("Integer Value: " + integerExampleGeneric.get());
+      System.out.println("String Value: " + stringExampleGeneric.get());
    }
 }
 
-class ExampleGeneric<K, T> {
-   private K key;
-   private T value;
-
-   public ExampleGeneric (K first, T second) {
-       this.key = first;
-       this.value = second;
+class ExampleGeneric<T> {
+   private T data;
+   
+   public ExampleGeneric(T data) {
+	   this.data = data;
+   }
+   
+   public void add(T data) {
+      this.data = data;
    }
 
-   public K getKey() {
-       return key;
-   }
-
-   public T getValue() {
-       return value;
-   }
+   public T get() {
+      return data;
+   }   
 }

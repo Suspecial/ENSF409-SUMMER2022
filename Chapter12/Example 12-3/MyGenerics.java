@@ -5,20 +5,37 @@ See LICENSE.txt for more information.
 */
 package edu.ucalgary.ensf409;
 
-class NotGenericClass {
-   public <T>void sampleMethod(T[] array) {
-      for(int i=0; i<array.length; i++) {
-         System.out.println(array[i]);
-      }
+public class MyGenerics {
+   public static void main(String[] args) {
+      Integer six = 6;
+      String aKey = "My Key";
+      String aValue = "This is a value";
+
+      ExampleGeneric<String,Integer> integerExampleGeneric = new ExampleGeneric<String, Integer>(aKey, six);
+      ExampleGeneric<String, String> stringExampleGeneric = new ExampleGeneric<String, String>(aKey, aValue);
+
+
+      System.out.println("Integer Key: " + integerExampleGeneric.getKey());
+      System.out.println("Integer Value: " + integerExampleGeneric.getValue());
+      System.out.println("String Key: " + stringExampleGeneric.getKey());
+      System.out.println("String Value: " + stringExampleGeneric.getValue());
    }
 }
 
-public class MyGenerics {
-   public static void main(String args[]) {
-      NotGenericClass myObject = new NotGenericClass();
-      Integer intArray[] = {100, 90, 80};
-      myObject.sampleMethod(intArray);
-      String stringArray[] = {"One", "Two", "Three"};
-      myObject.sampleMethod(stringArray);
+class ExampleGeneric<K, T> {
+   private K key;
+   private T value;
+
+   public ExampleGeneric (K first, T second) {
+       this.key = first;
+       this.value = second;
+   }
+
+   public K getKey() {
+       return key;
+   }
+
+   public T getValue() {
+       return value;
    }
 }
